@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.homework27.Employee;
+import pro.sky.homework27.service.ServiceEmployeeBook;
 import pro.sky.homework27.service.ServiceEmployeeBookImpl;
 
 import java.util.Collection;
@@ -12,9 +13,9 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
-    private final ServiceEmployeeBookImpl employeeService;
+    private final ServiceEmployeeBook employeeService;
 
-    public EmployeeController(ServiceEmployeeBookImpl employeeService) {
+    public EmployeeController(ServiceEmployeeBook employeeService) {
         this.employeeService = employeeService;
     }
 
