@@ -8,11 +8,11 @@ import java.util.Collections;
 public interface ServiceEmployeeBook {
 
 
-    Employee addEmployee(String firstName, String lastName);
+    Employee addEmployee(String firstName, String lastName, int departament, float salary);
 
-    Employee findEmployee(String firstName, String lastName);
+    Employee findEmployee(String firstName, String lastName, int departament, float salary);
 
-    Employee removeEmployee(String firstName, String lastName);
+    Employee removeEmployee(String firstName, String lastName, int departament, float salary);
 
     Collection<Employee> showEmployees();
 }

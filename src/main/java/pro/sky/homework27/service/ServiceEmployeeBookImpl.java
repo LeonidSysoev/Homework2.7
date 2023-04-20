@@ -19,9 +19,8 @@ public class ServiceEmployeeBookImpl implements ServiceEmployeeBook {
         this.employeesBook = new HashMap<>();
     }
 
-    @Override
-    public Employee addEmployee(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
+    public Employee addEmployee(String firstName, String lastName, int departament, float salary) {
+        Employee employee = new Employee(firstName, lastName, departament, salary);
         String key = employee.getFullName();
         if (employeesBook.containsKey(key)) {
             throw new EmployeesBookAlreadyAddedException("Сотрудник присутствует в списке!");
@@ -32,8 +31,8 @@ public class ServiceEmployeeBookImpl implements ServiceEmployeeBook {
 
 
     @Override
-    public Employee findEmployee(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
+    public Employee findEmployee(String firstName, String lastName, int departament, float salary) {
+        Employee employee = new Employee(firstName, lastName, departament, salary);
         String key = employee.getFullName();
         if (employeesBook.containsKey(key)) {
             return employeesBook.get(key);
@@ -41,9 +40,8 @@ public class ServiceEmployeeBookImpl implements ServiceEmployeeBook {
         throw new EmployeeNotFoundException("Сотрудник не найден!");
     }
 
-    @Override
-    public Employee removeEmployee(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
+    public Employee removeEmployee(String firstName, String lastName, int departament, float salary) {
+        Employee employee = new Employee(firstName, lastName, departament, salary);
         String key = employee.getFullName();
         if (employeesBook.containsKey(key)) {
             return employeesBook.remove(key);

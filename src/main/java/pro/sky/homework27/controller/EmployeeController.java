@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.homework27.Employee;
 import pro.sky.homework27.service.ServiceEmployeeBook;
-import pro.sky.homework27.service.ServiceEmployeeBookImpl;
 
 import java.util.Collection;
 
@@ -20,18 +19,21 @@ public class EmployeeController {
     }
 
     @GetMapping("/add")
-    public Employee addEmployee(@RequestParam String firstName, @RequestParam String lastName) {
-        return employeeService.addEmployee(firstName, lastName);
+    public Employee addEmployee(@RequestParam String firstName, @RequestParam String lastName,
+                                @RequestParam int departament, @RequestParam float salary) {
+        return employeeService.addEmployee(firstName, lastName,  departament, salary);
     }
 
     @GetMapping("/find")
-    public Employee findEmployee(@RequestParam String firstName, @RequestParam String lastName) {
-        return employeeService.findEmployee(firstName, lastName);
+    public Employee findEmployee(@RequestParam String firstName, @RequestParam String lastName,
+                                 @RequestParam int departament, @RequestParam float salary) {
+        return employeeService.findEmployee(firstName, lastName,  departament, salary);
     }
 
     @GetMapping("/remove")
-    public Employee removeEmployee(@RequestParam String firstName, @RequestParam String lastName) {
-        return employeeService.removeEmployee(firstName, lastName);
+    public Employee removeEmployee(@RequestParam String firstName, @RequestParam String lastName,
+                                   @RequestParam int departament, @RequestParam float salary) {
+        return employeeService.removeEmployee(firstName, lastName,  departament, salary);
     }
 
     @GetMapping("/show")
