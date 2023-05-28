@@ -5,7 +5,7 @@ import pro.sky.homework27.Employee;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -40,9 +40,9 @@ public class ServiceDepartamentImpl implements ServiceDepartament {
                 .collect(Collectors.toList());
     }
 
-    public List<Employee> findEmployeesByDepartament() {
+    public Map<Integer, List<Employee>> findEmployeesByDepartament() {
         return employeeBook.showEmployees().stream()
                 .sorted(Comparator.comparing(Employee::getDepartament))
-                .collect(Collectors.toList());
+                .collect(Collectors.groupingBy(Employee::getDepartament));
     }
 }

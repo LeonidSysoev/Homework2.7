@@ -1,14 +1,12 @@
 package pro.sky.homework27.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pro.sky.homework27.Employee;
 import pro.sky.homework27.service.ServiceDepartament;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/departments")
@@ -20,23 +18,23 @@ public class DepartmentController {
         this.serviceDepartament = serviceDepartament;
     }
 
-    @GetMapping("/max_salary")
-    public Employee maxSalaryEmployeeInDepartment(@RequestParam(name = "departmentId") Integer departmentId) {
-        return serviceDepartament.findMaxSalaryDepartament(departmentId);
+    @GetMapping("{id: \\d+}/{salary}/{max}")
+    public Employee maxSalaryEmployeeInDepartment(@PathVariable(name = "Id") Integer Id) {
+        return serviceDepartament.findMaxSalaryDepartament(Id);
     }
 
-    @GetMapping("/min_salary")
-    public Employee minSalaryEmployeeInDepartment(@RequestParam(name = "departmentId") Integer departmentId) {
-        return serviceDepartament.findMinSalaryDepartament(departmentId);
+    @GetMapping("{id: \\d+}/{salary}/{min}")
+    public Employee minSalaryEmployeeInDepartment(@PathVariable(name = "Id") Integer Id) {
+        return serviceDepartament.findMinSalaryDepartament(Id);
     }
 
-    @GetMapping("/all")
-    public Collection<Employee> findEmployeesInDepartment(@RequestParam(name = "departmentId") Integer departmentId) {
-        return serviceDepartament.findEmployeeInDepartament(departmentId);
+    @GetMapping("{id: \\d+}/{employeers}")
+    public Collection<Employee> findEmployeesInDepartment(@PathVariable(name = "Id") Integer Id) {
+        return serviceDepartament.findEmployeeInDepartament(Id);
     }
 
-    @GetMapping("/allemployeers")
-    public Collection<Employee> findEmployeesByDepartament() {
+    @GetMapping("/employeers")
+    public Map<Integer, List<Employee>> findEmployeesByDepartament() {
         return serviceDepartament.findEmployeesByDepartament();
     }
 }
